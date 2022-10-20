@@ -11,15 +11,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "AuthenticateUser")
+@Table(name = "authenticate_user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class AuthenticateUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String username;
-    String Password;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String username;
+    private String Password;
 }

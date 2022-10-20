@@ -1,8 +1,8 @@
-package br.com.ibm.vs_spring.vs_spring.service.authenticateUserService;
+package br.com.ibm.vs_spring.vs_spring.service;
 
 import br.com.ibm.vs_spring.vs_spring.dto.AuthenticateUserData;
 
-public interface IAuthenticateUserService {
+public interface AuthenticateUserService {
     /**
      * @param authenticateUserData
      * @return

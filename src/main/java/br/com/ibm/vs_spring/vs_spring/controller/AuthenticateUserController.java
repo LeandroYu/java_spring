@@ -1,7 +1,6 @@
 package br.com.ibm.vs_spring.vs_spring.controller;
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ibm.vs_spring.vs_spring.dto.AuthenticateUserData;
-import br.com.ibm.vs_spring.vs_spring.service.authenticateUserService.AuthenticateUserService;
-
+import br.com.ibm.vs_spring.vs_spring.service.IAuthenticateUserService;
 @RestController
 @RequestMapping("/authUser")
 public class AuthenticateUserController {
 
-    @Resource(name = "AuthenticateUserService")
-    private AuthenticateUserService authenticateUserService;
+    @Autowired
+    private IAuthenticateUserService authenticateUserService;
 
     /**
      * @param authenticateUserData
@@ -62,6 +60,15 @@ public class AuthenticateUserController {
     public ResponseEntity<String> deleteAuthenticateUser(@PathVariable Long id) {
         try {
              authenticateUserService.deleteAuthenticateUser(id);
+            return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Falha ao deletar usuario por favor tente novamente!", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(path = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> get() {
+        try {
             return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Falha ao deletar usuario por favor tente novamente!", HttpStatus.BAD_REQUEST);

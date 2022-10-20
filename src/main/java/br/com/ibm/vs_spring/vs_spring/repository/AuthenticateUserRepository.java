@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import br.com.ibm.vs_spring.vs_spring.entity.AuthenticateUser;
 
 @Repository
-public interface AuthenticateUserRepository extends JpaRepository<AuthenticateUser, Long>{
-    
-    @Query("SELECT * FROM  AuthenticateUser a WHERE a.username = :username AND a.password = :password")
+public interface AuthenticateUserRepository extends JpaRepository<AuthenticateUser, Long> {
+
+    @Query(value = "SELECT * FROM authenticate_user a WHERE a.username =:username AND a.password =:password", nativeQuery = true)
     AuthenticateUser getAuthenticateUser(@Param("username") String username, @Param("password") String password);
 }

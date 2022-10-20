@@ -1,4 +1,4 @@
-package br.com.ibm.vs_spring.vs_spring.service.authenticateUserService;
+package br.com.ibm.vs_spring.vs_spring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,8 +7,8 @@ import br.com.ibm.vs_spring.vs_spring.dto.AuthenticateUserData;
 import br.com.ibm.vs_spring.vs_spring.entity.AuthenticateUser;
 import br.com.ibm.vs_spring.vs_spring.repository.AuthenticateUserRepository;
 
-@Service("IAuthenticateUserService")
-public class AuthenticateUserService implements IAuthenticateUserService {
+@Service
+public class IAuthenticateUserService implements AuthenticateUserService {
 
     @Autowired
     private AuthenticateUserRepository authenticateUserRepository;
